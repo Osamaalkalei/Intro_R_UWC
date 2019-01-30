@@ -13,6 +13,7 @@ ggplot(data = chicks, aes(x = Time, y = weight)) +
   geom_point() +
   geom_line(aes(group = Chick))
 
+
 ggplot(chicks, aes( x = Time, y = weight, colour = Diet)) + 
   geom_point() + 
   geom_line(aes(group = Chick))
@@ -71,17 +72,66 @@ plot4
 library(ggpubr)
 plot_combined <- ggarrange(plot_1, plot_2, plot3, plot4)
 
-## 3rd library
+# load libraries 
 library(boot)
 
 urine <- boot::urine
+??urine
+
+urine %>% 
+  select(-cond)
+
+ggplot(data = urine, aes(x = osmo, y = ph)) +
+  geom_point(aes(colour = cond))
+
+ggplot(data = urine, aes(x = osmo, y = ph)) +
+  geom_point(aes(colour = as.factor(r)))
 
 
+# Day2 
+# Homework Plotting in R using ggplot2
+# Osama Alkalei
+# 30th Jan 2019
 
+# load libraries
 
+library(ggpubr) 
 
+growth <- datasets::trees
+??trees
 
+ggplot(growth, aes(x = Girth, y = Height, colour = Volume)) + 
+  geom_point(aes(size = Height)) +
+  geom_smooth(method = "lm") +
+  labs(x = "Girth", y = "Hieght (ft)") +
+  theme_bw() +
+  ggtitle("Trees Growth") +
+  theme_bw()
 
+ggplot(growth, aes(x = Girth, y = Height, colour = Volume)) +
+  geom_line() + 
+  geom_smooth(method = "lm")
+
+# load libraries
+library(ggpubr)
+
+vehicle <- datasets::cars
+??cars
+
+ggplot(vehicle, aes(x = dist, y = speed)) +
+  geom_line() + 
+  geom_smooth(method = "lm") +
+  ggtitle("vehicle speed") +
+  theme_bw()
+
+ggplot(vehicle, aes(x = dist, y = speed)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") +
+  labs(x = "distanc", y = "speed") +
+  theme_bw() +
+  ggtitle("vehicle speed") +
+  theme_bw()
+  
 
 
 
